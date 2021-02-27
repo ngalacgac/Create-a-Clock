@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create a Clock</title>
+  <link href="style.css" text="text/css" rel="stylesheet">
+  <script src="main.js"></script>
+</head>
+
+<body>
+
+  <script>
+    $(document).ready(function() {
+
+    function displayTime() {
+    
+      let currentTime = new Date();
+      let hours = currentTime.getHours();
+      let minutes = currentTime.getMinutes();
+      let seconds = currentTime.getSeconds();
+      let meridiem = "AM";
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+
+    if (hours > 12) {
+      hours = hours - 12;
+      meridiem = "PM"
+    }
+
+    if (hours === 0) {
+      hours = 12;
+    }
+
+    let clockDiv =  document.getElementById('clock');
+
+    clockDiv.innerText = hours + ":" + minutes + ":" + seconds + meridiem;
+
+    }
+    
+  displayTime();
+  setInterval(displayTime, 1000);
+
+});
+
+  </script>
+
+  <div id="clock"></div>
+
+</body>
+
+</html>
